@@ -14,6 +14,7 @@ mvnw.cmd
 # Spring-specific files
 .springbeans/
 spring.log
+.springBeans
 
 # Eclipse / IntelliJ IDEA specific files
 .project
