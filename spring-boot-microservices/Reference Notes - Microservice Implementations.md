@@ -13,12 +13,29 @@
 8. [Assignment](#8-assignment)
 --------------
 
-## 1. Rest Template Implementation
- 
+### 1. Rest Template Implementation
+```java
++----------------------------+                           +-----------------------------+
+|   Microservice-01 (8282)  |                            |   Microservice-02 (8080)    |
+|   [EmployeeService.java]  |                            |   [EmployeeController.java] |
++----------------------------+                            +-----------------------------+
+|  - createEmployee()        |                            |                             |
+|   ===> POST /api/v1/employees    --------------->        createEmployee(@RequestBody) |
+|                           |                             |                             |
+| - getEmployeeById(Long id)|                             |                             |
+|   ===> GET /api/v1/employees/{id} -------------->         getEmployeeById(@PathVar)   |
+|                           |                             |                             |
+| - getAllEmployees()       |                             |                             |
+|   ===> GET /api/v1/employees       --------------->       getAllEmployees()           |
+|                           |                             |                             |
+| - updateEmployee(Long id) |                             |                             |
+|   ===> PUT /api/v1/employees/{id}  ----------------->     updateEmployee(@PathVar)    |
+|                            |                            |                             |
+| - deleteEmployee(Long id)  |                            |                             |
+|   ===> DELETE /api/v1/employees/{id} ---------------->     deleteEmployee(@PathVar)   |
++----------------------------+                            +-----------------------------+
+```
 
-1. Bootstrap class loader - loads all the JAR files (placed inside **rt.jar**)
-2. Extension class loader
-3. Application class loader
 ---
 ## 7. Data Shadowing and Data Hiding
 <table>
