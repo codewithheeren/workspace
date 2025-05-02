@@ -13,7 +13,7 @@
 8. [Assignment](#8-assignment)
 --------------
 
-### 1. Rest Template Implementation
+### 1. Rest Template Implementation (Microservice-01,Microservice-02)
 ```java
 +----------------------------+                           +-----------------------------+
 |   Microservice-01 (8282)  |                            |   Microservice-02 (8080)    |
@@ -37,21 +37,39 @@
 ```
 
 ---
-## 7. Data Shadowing and Data Hiding
-<table>
-    <tr>
-        <td><a href="https://youtu.be/1UXBX1xcOmI">
-            <img src="https://github.com/user-attachments/assets/393a6073-ba6a-48dd-972b-9e9b8d908e45" alt="yt" width="20" height="20">
-        </a></td>
-        <th align="left">7. Data Shadowing and Data Hiding</th>
-    </tr>
- </table>
- 
-🔵 **Data Shadowing**      
-If method's local variable and class level variable having same name then inside the method local priority will goes to method's local variable. That is known as data shadowing.In this case 'this' Keyword is use to access class level variable. 
-
-🔵 **Data Hiding**     
-In case of Inheritance if parent class data member and child class data memeber having same name then from child class priority will goes to child class data member, that is known as data hiding.  In this case 'super' keyword is use to access parent class variable.
+### 2. Implementing h2-console database and exposing rest endpoint for currency exchange (3.currency-exchange-service)    
+```java
++-----------------------------------------------------------+
+|               Currency Exchange Microservice              |
+|                  (Port: 8000, Spring Boot)                |
++-----------------------------------------------------------+
+| @RestController                                           |
+| CurrencyExchangeController                                |
+|                                                           |
+|  ===> GET /currency-exchange/from/{from}/to/{to}          |
+|       -- called from REST client (browser/Postman)        |
+|                                                           |
+|        ---> retrieveExchangeValue(String from, String to) |
+|             |                                             |
+|             |                                             |
+|             ---> repository.findByFromAndTo(from, to)     |
+|                          |                                |
+|                          |                                |
+|                          ---> [H2 DATABASE]               |
+|                                ExchangeValue Table        |
+|                                                           |
++-----------------------------------------------------------+
+| @Component                                                |
+| ExchangeValueDataLoader laoding sample data in db         |
+|                                                           |
+|  ===> On app startup:                                     |
+|       ---> Inserts sample data to H2 DB:                  |
+|           - USD -> INR : 65                               |
+|           - EUR -> INR : 75                               |
+|           - AUD -> INR : 25                               |
+|                                                           |
+|  ---> System.out.println("Exchange values inserted!")     |
++-----------------------------------------------------------+
 
 ---
 ## 8. Assignment   
