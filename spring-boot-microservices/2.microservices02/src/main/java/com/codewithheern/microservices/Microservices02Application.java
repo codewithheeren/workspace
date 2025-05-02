@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan("com.codewithheeren")
+// Running on Port 8080- Exposing Rest endpoints. 
 public class Microservices02Application {
 
 	public static void main(String[] args) {

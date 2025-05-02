@@ -8,6 +8,8 @@ import org.springframework.web.client.RestTemplate;
 import com.codewithheeren.microservices.service.EmployeeService;
 
 @SpringBootApplication
+// Running on Port 8181- Rest Template Implementation.
+// Consuming Microservice02 Rest endpoints using RestTemplate. 
 public class MicroservicesApplication {
 
     public static void main(String[] args) {
