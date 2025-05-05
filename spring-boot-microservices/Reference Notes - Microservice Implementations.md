@@ -13,7 +13,7 @@
 8. [Assignment](#8-assignment)
 --------------
 
-### 1. Rest Template Implementation (Microservice-01,Microservice-02)
+**1. Rest Template Implementation (Microservice-01,Microservice-02)**
 ```java
 +----------------------------+                           +-----------------------------+
 |   Microservice-01 (8282)  |                            |   Microservice-02 (8080)    |
@@ -37,7 +37,7 @@
 ```
 
 ---
-### 2. Implementing h2-console database and exposing rest endpoint for currency exchange (3.currency-exchange-service)    
+**2. Implementing h2-console database and exposing rest endpoint for currency exchange (3.currency-exchange-service)**    
 ```java
 +-----------------------------------------------------------+
 |               Currency Exchange Microservice              |
@@ -70,8 +70,71 @@
 |                                                           |
 |  ---> System.out.println("Exchange values inserted!")     |
 +-----------------------------------------------------------+
-
+```
 ---
+**3. Using Rest Template 4.currency-conversion-service (Running on port 8100) Calling 3.currency-exchange-service (Running on port 8000)**
+```java
++-------------------------------------------------------------+
+|          Currency Conversion Microservice (Port 8100)       |
+|         spring.application.name=currency-conversion-service |
++-------------------------------------------------------------+
+| @RestController                                             |
+| CurrencyConversionController                                |
+|                                                             |
+| ===> GET /currency-converter/from/{from}/to/{to}/quantity/{q} 
+|      -- called by REST Client (Postman/Browser)             |
+|                                                             |
+|    ---> convertCurrency(from, to, quantity)                 |
+|           |                                                 |
+|           |                                                 |
+|           ---> RestTemplate.getForEntity(                   |
+|                   "http://localhost:8000/currency-exchange/|
+|                        from/{from}/to/{to}",                |
+|                        CurrencyConversionBean.class)        |
+|                          |                                  |
+|                          |                                  |
+|                          ===> HTTP CALL to PORT 8000        |
+|                                                             |
++-------------------------------------------------------------+
+
+                            |
+                            |  (REST Call)
+                            V
+
++-------------------------------------------------------------+
+|          Currency Exchange Microservice (Port 8000)         |
+|         spring.application.name=currency-exchange-service   |
++-------------------------------------------------------------+
+| @RestController                                             |
+| CurrencyExchangeController                                  |
+|                                                             |
+| ===> GET /currency-exchange/from/{from}/to/{to}             |
+|                                                             |
+|    ---> repository.findByFromAndTo(from, to)                |
+|           |                                                 |
+|           ---> [H2 Database: ExchangeValue Table]           |
+|                                                             |
+|    ---> Response (id, from, to, conversionMultiple, port)   |
++-------------------------------------------------------------+
+
+                            |
+                            |  (Response returned)
+                            V
+
++-------------------------------------------------------------+
+|          Currency Conversion Microservice (Continued)       |
++-------------------------------------------------------------+
+| <--- receives CurrencyConversionBean                        |
+|                                                             |
+| ---> Calculates totalAmount = quantity * conversionMultiple |
+|                                                             |
+| ===> Final Response to Client                               |
+|      (id, from, to, quantity, conversionMultiple,           |
+|       totalAmount, port from exchange-service)              |
++-------------------------------------------------------------+
+```
+---
+
 ## 8. Assignment   
 
 **Task 1:** Implement a class with a static variable to count the number of instances and then Create multiple instances of this class and print the count.
