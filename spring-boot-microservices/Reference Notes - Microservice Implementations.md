@@ -3,14 +3,9 @@
 
  **Topics Covered**
 --------------
-1. [Java Features and Compilation, Execution Architecture of Java Program](#1-java-features-and-compilation-execution-architecture-of-java-program)       
-2. [Types of Class Loaders](#2-types-of-class-loaders)       
-3. [Variables and Data Types](#3-variables-and-data-types)
-4. [IDE and JDK Installation](#4-ide-and-jdk-installation)
-5. [First Java Program](#5-first-java-program)      
-6. [OOPS Fundamentals](#6-oops-fundamentals)
-7. [Data Shadowing and Data Hiding](#7-data-shadowing-and-data-hiding)
-8. [Assignment](#8-assignment)
+1. [Rest Template Implementation (Microservice-01, Microservice-02)](#1-rest-template-implementation-microservice-01-microservice-02)        
+2. [Implementing H2-Console Database and Exposing REST Endpoint for Currency Exchange (currency-exchange-service)](#2-implementing-h2-console-database-and-exposing-rest-endpoint-for-currency-exchange-currency-exchange-service)     
+3. [Using Rest Template: currency-conversion-service (Port 8100) Calling currency-exchange-service (Port 8000)](#3-using-rest-template-currency-conversion-service-port-8100-calling-currency-exchange-service-port-8000)    
 --------------
 
 **1. Rest Template Implementation (Microservice-01,Microservice-02)**
