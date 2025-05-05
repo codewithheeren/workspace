@@ -129,6 +129,64 @@
 +-------------------------------------------------------------+
 ```
 ---
+**4. Implementing Feign Client, 4.currency-conversion-service (Running on port 8100) Calling 3.currency-exchange-service (Running on port 8000)**
+```java
++-------------------------------------------------------------+
+|     Currency Conversion Feign Microservice (Port 8100)      |
+|  spring.application.name=currency-conversion-service        |
++-------------------------------------------------------------+
+| @SpringBootApplication + @EnableFeignClients                |
+|                                                             |
+| @RestController                                             |
+| CurrencyConversionController                                |
+|                                                             |
+| ===> GET /currency-converter-feign/from/{from}/to/{to}/     |
+|               quantity/{quantity}                           |
+|                                                             |
+| ---> convertCurrencyFeign(from, to, quantity)               |
+|       ---> proxy.retrieveExchangeValue(from, to)           |
+|              |                                              |
+|              ===> FeignClient auto-generated HTTP call      |
+|                   to currency-exchange-service              |
+|                                                             |
++-------------------------------------------------------------+
+
+                            |
+                            |  (Feign REST Call)
+                            V
+
++-------------------------------------------------------------+
+|           Currency Exchange Microservice (Port 8000)        |
+|         spring.application.name=currency-exchange-service   |
++-------------------------------------------------------------+
+| @RestController                                             |
+| CurrencyExchangeController                                  |
+|                                                             |
+| ===> GET /currency-exchange/from/{from}/to/{to}             |
+|                                                             |
+| ---> repository.findByFromAndTo(from, to)                   |
+|       ---> [H2 Database: ExchangeValue Table]               |
+|                                                             |
+| ---> Returns ExchangeValue (id, from, to, conversionRate,   |
+|                              port)                          |
++-------------------------------------------------------------+
+
+                            |
+                            |  (Feign Response)
+                            V
+
++-------------------------------------------------------------+
+|   Currency Conversion Feign Microservice (Continued)        |
++-------------------------------------------------------------+
+| <--- receives CurrencyConversionBean from proxy             |
+|                                                             |
+| ---> Calculates totalAmount = quantity * conversionMultiple |
+|                                                             |
+| ===> Final Response to Client                               |
+|      (id, from, to, quantity, conversionMultiple,           |
+|       totalAmount, port from exchange-service)              |
++-------------------------------------------------------------+
+```
 
 ## 8. Assignment   
 
