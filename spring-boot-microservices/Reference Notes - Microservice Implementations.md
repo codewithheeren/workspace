@@ -129,11 +129,11 @@
 +-------------------------------------------------------------+
 ```
 ---
-**4. Implementing Feign Client, 4.currency-conversion-service (Running on port 8100) Calling 3.currency-exchange-service (Running on port 8000)**
+**4. Implementing Feign Client, 5.currency-conversion-service (Running on port 8100) Calling 3.currency-exchange-service (Running on port 8000)**
 
-- 4.currency-conversion-service (Microservice1) is client class which is consuming 3.currency-exchange-service (Microservice 2).
- - 4.currency-conversion-service (Microservice1) having a proxy service implemented feign client to simplifies REST APIs call of existing 3.currency-exchange-service (Microservice 2).
- - 4.currency-conversion-service (Microservice1) getting rates from 3.currency-exchange-service (Microservice 2) and then calculating total conversion amount basis on quantity.
+- 5.currency-conversion-service (Microservice1) is client class which is consuming 3.currency-exchange-service (Microservice 2).
+ - 5.currency-conversion-service (Microservice1) having a proxy service implemented feign client to simplifies REST APIs call of existing 3.currency-exchange-service (Microservice 2).
+ - 5.currency-conversion-service (Microservice1) getting rates from 3.currency-exchange-service (Microservice 2) and then calculating total conversion amount basis on quantity.
 
 ```java
 +-------------------------------------------------------------+
