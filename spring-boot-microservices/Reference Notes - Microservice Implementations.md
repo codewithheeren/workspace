@@ -3,12 +3,14 @@
 
  **Topics Covered**
 --------------
-1. [Rest Template Implementation (Microservice-01, Microservice-02)](#1-rest-template-implementation-microservice-01-microservice-02)        
-2. [Implementing H2-Console Database and Exposing REST Endpoint for Currency Exchange (currency-exchange-service)](#2-implementing-h2-console-database-and-exposing-rest-endpoint-for-currency-exchange-currency-exchange-service)     
-3. [Using Rest Template: currency-conversion-service (Port 8100) Calling currency-exchange-service (Port 8000)](#3-using-rest-template-currency-conversion-service-port-8100-calling-currency-exchange-service-port-8000)    
+1. [**Task-1.** Rest Template Implementation (Microservice-01, Microservice-02)](#1-task-1-rest-template-implementation-microservice-01-microservice-02)  
+2. [**Task-2.** Implementing H2-Console Database and Exposing REST Endpoint for Currency Exchange (currency-exchange-service)](#2-task-2-implementing-h2-console-database-and-exposing-rest-endpoint-for-currency-exchange-currency-exchange-service)  
+3. [**Task-3.** Using Rest Template: currency-conversion-service (Port 8100) Calling currency-exchange-service (Port 8000)](#3-task-3-using-rest-template-currency-conversion-service-port-8100-calling-currency-exchange-service-port-8000)  
+4. [**Task-4.** Implementing Feign Client: currency-conversion-service (Port 8100) Calling currency-exchange-service (Port 8000)](#4-task-4-implementing-feign-client-currency-conversion-service-port-8100-calling-currency-exchange-service-port-8000)
+ 
 --------------
 
-**1. Rest Template Implementation (Microservice-01,Microservice-02)**
+**Task-1. Rest Template Implementation (Microservice-01,Microservice-02)**
 ```java
 +----------------------------+                           +-----------------------------+
 |   Microservice-01 (8282)  |                            |   Microservice-02 (8080)    |
@@ -32,7 +34,7 @@
 ```
 
 ---
-**2. Implementing h2-console database and exposing rest endpoint for currency exchange (3.currency-exchange-service)**    
+**Task-2. Implementing h2-console database and exposing rest endpoint for currency exchange (3.currency-exchange-service)**    
 ```java
 +-----------------------------------------------------------+
 |               Currency Exchange Microservice              |
@@ -67,7 +69,7 @@
 +-----------------------------------------------------------+
 ```
 ---
-**3. Using Rest Template 4.currency-conversion-service (Running on port 8100) Calling 3.currency-exchange-service (Running on port 8000)**
+**Task-3. Using Rest Template 4.currency-conversion-service (Running on port 8100) Calling 3.currency-exchange-service (Running on port 8000)**
 ```java
 +-------------------------------------------------------------+
 |          Currency Conversion Microservice (Port 8100)       |
@@ -129,7 +131,7 @@
 +-------------------------------------------------------------+
 ```
 ---
-**4. Implementing Feign Client, 5.currency-conversion-service (Running on port 8100) Calling 3.currency-exchange-service (Running on port 8000)**
+**Task-4. Implementing Feign Client, 5.currency-conversion-service (Running on port 8100) Calling 3.currency-exchange-service (Running on port 8000)**
 
 - 5.currency-conversion-service (Microservice1) is client class which is consuming 3.currency-exchange-service (Microservice 2).
  - 5.currency-conversion-service (Microservice1) having a proxy service implemented feign client to simplifies REST APIs call of existing 3.currency-exchange-service (Microservice 2).
@@ -192,15 +194,4 @@
 |       totalAmount, port from exchange-service)              |
 +-------------------------------------------------------------+
 ```
-
-## 8. Assignment   
-
-**Task 1:** Implement a class with a static variable to count the number of instances and then Create multiple instances of this class and print the count.
-
-**Task 2:** Develop a Java class to represent a library, with a static data member to store the total number of books in the library and an instance data member to store the book's title. Implement a static method to update the total count when a new book is added.
-
-**Task 3:** Implement a Java class to manage a shopping cart, with an instance data member to store the items in the cart and instance methods to add, remove, and calculate the total price of the items.
-
-**Task 4:** Develop a Java program to process a list of employees. Use instance methods to calculate their salary based on after 10% of tax deduction.
-
 ---
