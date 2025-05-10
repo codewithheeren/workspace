@@ -313,8 +313,7 @@ intance 2 - (Running on port 8085)**
                       | --> LoadBalancer chooses one instance
                       | --> Sends REST call to selected instance
                       +-----------------------------+
-
+```
 ![test](https://github.com/user-attachments/assets/dae1df48-1bbf-4793-944c-cf7a87db7909)
 
-```
 ---
