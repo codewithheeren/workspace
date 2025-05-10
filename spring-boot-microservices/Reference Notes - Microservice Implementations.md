@@ -274,11 +274,11 @@ intance 2 - (Running on port 8085)**
 +-------------------------------------------------------------+
 ```
 ---
-**Task-6. Implementing Eureka Naming Server** 
-📌 Following services used -
-7.eureka-naming-server
-8.currency-conversion-service_dynamicloadbalancing
-3.currency-exchange-service
+**Task-6. Implementing Eureka Naming Server**    
+📌 Following services used -    
+**Service 1** - 7.eureka-naming-server    
+**Service 2** - 8.currency-conversion-service_dynamicloadbalancing    
+**Service 3** - 3.currency-exchange-service    
 
 🔁 **Execution Flow Summary**
 - eureka-naming-server starts first.
