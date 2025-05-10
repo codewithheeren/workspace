@@ -274,3 +274,47 @@ intance 2 - (Running on port 8085)**
 +-------------------------------------------------------------+
 ```
 ---
+**Task-6. Implementing Eureka Naming Server** 
+
+![test](https://github.com/user-attachments/assets/c8db0e66-3c21-4142-89a9-b0c063bf0c04)
+![eureka](https://github.com/user-attachments/assets/5162fc9c-4ed1-469d-904d-0c4a71b72d8c)
+
+```java
+                         
+                      +-----------------------------+
+                      |     Eureka Naming Server    |
+                      |        (Port 8761)          |
+                      +--------------+--------------+
+                                     ^
+                                     |
+            Service Registry         | Registers & fetches instances
+                                     |
+          +--------------------------+--------------------------+
+          |                                                     |
++----------------------------+                     +----------------------------+
+|  Currency Exchange Service |                     |  Currency Exchange Service |
+|        (Port 8085)         |                     |        (Port 8086)         |
++----------------------------+                     +----------------------------+
+|  Registered with Eureka    |                     |  Registered with Eureka    |
++----------------------------+                     +----------------------------+
+
+                                     ▲
+                                     |
+                Load Balanced        | Uses Eureka + Spring Cloud LoadBalancer
+                                     |
+                      +--------------+--------------+
+                      | Currency Conversion Service |
+                      |        (Port 8100)          |
+                      +-----------------------------+
+                      | Feign Client + LoadBalancer |
+                      |                             |
+                      | --> Ask Eureka for "currency-exchange-service"
+                      | --> Eureka returns list: [8085, 8086]
+                      | --> LoadBalancer chooses one instance
+                      | --> Sends REST call to selected instance
+                      +-----------------------------+
+
+![test](https://github.com/user-attachments/assets/dae1df48-1bbf-4793-944c-cf7a87db7909)
+
+```
+---
