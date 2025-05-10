@@ -34,7 +34,12 @@
 ```
 
 ---
-**Task-2. Implementing h2-console database and exposing rest endpoint for currency exchange (3.currency-exchange-service)**    
+**Task-2. Implementing h2-console database and exposing rest endpoint for currency exchange (3.currency-exchange-service)**  
+Disable eureka server for this implementation - 
+![image](https://github.com/user-attachments/assets/bc8714bd-2be5-4ff7-bf93-3509895bf7f3)
+![image](https://github.com/user-attachments/assets/b8e8eae3-c731-4b8d-b735-82b2b11b6bc6)
+
+**Flow Diagram -**
 ```java
 +-----------------------------------------------------------+
 |               Currency Exchange Microservice              |
