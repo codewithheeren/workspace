@@ -195,3 +195,77 @@
 +-------------------------------------------------------------+
 ```
 ---
+**Task-5. Implementing Spring clound load balancer, 6.currency-conversion-service (Running on port 8100) Calling 3.currency-exchange-service Running 2 instances       intance 1 - (Running on port 8085)     
+intance 2 - (Running on port 8085)**    
+
+- This project implements spring cloud load balancer.
+- Prerequisite - execute multiple instances of currency exchange service.
+- Use following running configurations in Ecilipse/STS for currency exchange service -
+![image](https://github.com/user-attachments/assets/32d4466f-b8fb-4739-becd-73f264d54d48)   
+
+![image](https://github.com/user-attachments/assets/b9af196c-58c5-4e94-8ad2-00c99c8aa2f6)   
+
+```java
++-------------------------------------------------------------+
+|     Currency Conversion Service (Port 8100)                 |
+|     spring.application.name=currency-conversion-service     |
++-------------------------------------------------------------+
+| @SpringBootApplication + @EnableFeignClients                |
+|                                                             |
+| @RestController                                             |
+| CurrencyConversionController                                |
+|                                                             |
+| ===> GET /currency-converter/from/{from}/to/{to}/           |
+|                quantity/{quantity}                          |
+|                                                             |
+| ---> convertCurrencyFeign(from, to, quantity)               |
+|       ---> proxy.retrieveExchangeValue(from, to)           |
+|              |                                              |
+|              ===> Feign Client                              |
+|              |                                              |
+|              ===> Spring Cloud LoadBalancer                 |
+|                      |                                      |
+|                      V                                      |
+|       +--------------------Load Balancer------------------+ |
+|       | Resolves "currency-exchange-service" to 2 instances| |
+|       |                                                    | |
+|       | - localhost:8085 (currency-exchange-1)             | |
+|       | - localhost:8086 (currency-exchange-2)             | |
+|       +----------------------------------------------------+ |
+|                                                             |
++-------------------------------------------------------------+
+                            |
+                            |  (Load-balanced Feign REST call)
+                            V
+
++-------------------------------------------------------------+
+|           Currency Exchange Microservice (One of):          |
+|             [Port 8085] OR [Port 8086]                      |
+|         spring.application.name=currency-exchange-service   |
++-------------------------------------------------------------+
+| @RestController                                             |
+| CurrencyExchangeController                                  |
+|                                                             |
+| ===> GET /currency-exchange/from/{from}/to/{to}             |
+|                                                             |
+| ---> Returns ExchangeValue (id, from, to, conversionRate,   |
+|                              port)                          |
++-------------------------------------------------------------+
+
+                            |
+                            |  (Feign Response)
+                            V
+
++-------------------------------------------------------------+
+|   Currency Conversion Service (Continued - Port 8100)       |
++-------------------------------------------------------------+
+| <--- receives CurrencyConversionBean from proxy             |
+|                                                             |
+| ---> Calculates totalAmount = quantity * conversionMultiple |
+|                                                             |
+| ===> Final Response to Client                               |
+|      (id, from, to, quantity, conversionMultiple,           |
+|       totalAmount, port of instance used)                   |
++-------------------------------------------------------------+
+```
+---
