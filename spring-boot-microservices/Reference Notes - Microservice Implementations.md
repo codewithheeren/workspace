@@ -275,7 +275,18 @@ intance 2 - (Running on port 8085)**
 ```
 ---
 **Task-6. Implementing Eureka Naming Server** 
+📌 Following services used -
+7.eureka-naming-server
+8.currency-conversion-service_dynamicloadbalancing
+3.currency-exchange-service
 
+🔁 **Execution Flow Summary**
+- eureka-naming-server starts first.
+- Both currency-exchange-service instances (8085 and 8086) register with Eureka.
+- currency-conversion-service also registers itself with Eureka.
+- Spring Cloud LoadBalancer + Eureka is enabled in currency-conversion-service
+
+🔁 **Eureka server flow diagrams**
 ![test](https://github.com/user-attachments/assets/c8db0e66-3c21-4142-89a9-b0c063bf0c04)
 ![eureka](https://github.com/user-attachments/assets/5162fc9c-4ed1-469d-904d-0c4a71b72d8c)
 
