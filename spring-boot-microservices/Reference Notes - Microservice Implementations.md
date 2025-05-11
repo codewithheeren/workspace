@@ -3,10 +3,17 @@
 
  **Topics Covered**
 --------------
-1. [**Task-1.** Rest Template Implementation (Microservice-01, Microservice-02)](#1-task-1-rest-template-implementation-microservice-01-microservice-02)  
-2. [**Task-2.** Implementing H2-Console Database and Exposing REST Endpoint for Currency Exchange (currency-exchange-service)](#2-task-2-implementing-h2-console-database-and-exposing-rest-endpoint-for-currency-exchange-currency-exchange-service)  
-3. [**Task-3.** Using Rest Template: currency-conversion-service (Port 8100) Calling currency-exchange-service (Port 8000)](#3-task-3-using-rest-template-currency-conversion-service-port-8100-calling-currency-exchange-service-port-8000)  
-4. [**Task-4.** Implementing Feign Client: currency-conversion-service (Port 8100) Calling currency-exchange-service (Port 8000)](#4-task-4-implementing-feign-client-currency-conversion-service-port-8100-calling-currency-exchange-service-port-8000)
+## 📘 Index
+
+1. [**Task-1.** Rest Template Implementation (Microservice-01, Microservice-02)](#task-1-rest-template-implementation-microservice-01microservice-02)  
+2. [**Task-2.** Implementing H2-Console Database and Exposing REST Endpoint for Currency Exchange (currency-exchange-service)](#task-2-implementing-h2-console-database-and-exposing-rest-endpoint-for-currency-exchange-3currency-exchange-service)  
+3. [**Task-3.** Using Rest Template: currency-conversion-service (Port 8100) Calling currency-exchange-service (Port 8000)](#task-3-using-rest-template-4currency-conversion-service-running-on-port-8100-calling-3currency-exchange-service-running-on-port-8000)  
+4. [**Task-4.** Implementing Feign Client: currency-conversion-service (Port 8100) Calling currency-exchange-service (Port 8000)](#task-4-implementing-feign-client-5currency-conversion-service-running-on-port-8100-calling-3currency-exchange-service-running-on-port-8000)  
+5. [**Task-5.** Implementing Spring Cloud Load Balancer: 6.currency-conversion-service calling 3.currency-exchange-service with 2 instances](#task-5-implementing-spring-cloud-load-balancer-6currency-conversion-service-running-on-port-8100-calling-3currency-exchange-service-running-2-instances---intance-1---running-on-port-8085-----intance-2---running-on-port-8085)  
+6. [**Task-6.** Implementing Eureka Naming Server](#task-6-implementing-eureka-naming-server)  
+7. [**Task-7.** Spring Cloud Config Server Local Git Setup](#task-7-spring-cloud-config-server-local-git-setup--)  
+8. [**Task-8.** Spring Cloud Config Server Remote Git Setup](#task-8-spring-cloud-config-server-remote-git-setup--)  
+9. [**Assignment**](#assignment)
  
 --------------
 
@@ -466,8 +473,9 @@ For Dev profile , default and dev profile properties are getting as response.
 
 ```
 ---
+**Assignment**
 **This Assignmet need to be done with following steps-**
 - Create a Spring Cloud Config Server that reads .properties files (for default, dev, and qa) from a Git repository or local folder.    
-- Build a Spring Boot microservice (client) that connects to the config server and reads these properties dynamically.     
+- Build a Spring Boot microservice (client) that connects to the config server and reads these properties dynamically basis on activated profile.     
 - Create a simple REST endpoint in client microservice to return the loaded configuration values.         
 - Test the application by running it with different profiles (dev, qa, or default) to confirm the correct config values are loaded.   
