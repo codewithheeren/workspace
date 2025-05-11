@@ -356,7 +356,7 @@ http://localhost:8888/propertyfilename/qa
 ![Capture](https://github.com/user-attachments/assets/22c6d044-61d4-4062-bd59-4b401042e57c)
 
 
-🔁 **Spring cloud config server flow diagram**     
+🔁 **Spring cloud config server flow diagram for Local git Repository**     
 ```java
                                 +-----------------------------------+
                                 |      Local Git Repository         |
@@ -390,4 +390,79 @@ http://localhost:8888/propertyfilename/qa
 +------------------------+     +-------------------------------+     +-------------------------------+
 ```
 ---
+**Task-8. Spring Cloud Config Server Remote Git Setup -**    
+📌 Following service used -    
+- 9.2.spring-cloud-config-server-remoteGit     
 
+🔁 **Implementation Steps** -          
+**Step 1** - Config server project setup (9.2.spring-cloud-config-server-remoteGit).        
+**Step 2** - Create global repository with configuration files of different enviornments. or else push push configuration files from local repository to global.   
+EG. -    
+![Capture](https://github.com/user-attachments/assets/ff1258cf-be94-4546-9a0e-bba6122b6e15)   
+
+**Step 3** - Connect spring cloud config server with remote git repo directory -    
+![Capture](https://github.com/user-attachments/assets/07555f17-4ce5-4c13-a1ab-c50deda17407)
+     
+**Step 4** - Run spring cloud config server and test for different environment 
+```java
+http://localhost:8888/application/default
+http://localhost:8888/application/dev
+http://localhost:8888/application/qa
+```
+![Capture2](https://github.com/user-attachments/assets/6f25916b-fd07-4c31-9367-304aa3415b56)
+![Capture](https://github.com/user-attachments/assets/58187859-c0d1-46cb-b323-2f966a7847ee)
+
+**Expected response -**     
+For Dev profile , default and dev profile properties are getting as response.
+![Capture](https://github.com/user-attachments/assets/28520742-94e4-46f4-8196-5bdc117a99e5)
+
+🔁 **Spring cloud config server flow diagram for Remote git Repository**     
+```java
+                           +---------------------------------------------------+
+                           |             GitHub Remote Repository              |
+                           | https://github.com/codewithheeren/workspace.git   |
+                           | ➤ Folder: spring-boot-microservices               |
+                           |     - application.properties                      |
+                           |     - application-dev.properties                  |
+                           |     - application-qa.properties                   |
+                           | ➤ Branch: main                                    |
+                           +---------------------------------------------------+
+                                            ▲
+                                            |
+                           Loads config from branch: main, path: spring-boot-microservices
+                                            |
++-------------------------------------------|-------------------------------------------+
+|                               Spring Cloud Config Server                              |
+|                       (http://localhost:8888, Port: 8888)                             |
+|                                                                                       |
+| spring.application.name = spring-cloud-config-server                                  |
+| spring.cloud.config.server.git.uri = https://...workspace.git                         |
+| spring.cloud.config.server.git.searchPaths = spring-boot-microservices                |
+| spring.cloud.config.server.git.default-label = main                                   |
+|                                                                                       |
+|  ➤ Serves configuration via REST:                                                     |
+|    - http://localhost:8888/application/default                                        |
+|    - http://localhost:8888/application/dev                                            |
+|    - http://localhost:8888/application/qa                                             |
++-------------------------------------------|-------------------------------------------+
+                                            |
+                         (Clients fetch configs on startup or refresh)
+                                            |
+          ------------------------------------------------------------------
+          |                |                       |                       |
++----------------+  +--------------------+  +--------------------+  +----------------------+
+| Dev Environment|  | QA Environment     |  | Default Environment|  | Other Microservices |
+| (Port 2000)    |  | (Port 3000)        |  | (Any fallback)     |  | as needed           |
++----------------+  +--------------------+  +--------------------+  +----------------------+
+| spring.application.name=application                            |
+| spring.profiles.active=dev / qa / default                      |
+| spring.config.import=optional:configserver:http://localhost:8888 |
+|                                                                 |
+| ➤ Fetches from:                                                 |
+|   - /application-dev.properties (for dev)                       |
+|   - /application-qa.properties (for qa)                         |
+|   - /application.properties (for default)                       |
++-----------------------------------------------------------------+
+
+```
+---
