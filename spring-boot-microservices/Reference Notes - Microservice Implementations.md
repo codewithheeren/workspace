@@ -329,3 +329,22 @@ intance 2 - (Running on port 8085)**
 ![test](https://github.com/user-attachments/assets/dae1df48-1bbf-4793-944c-cf7a87db7909)
 
 ---
+
+**Task-7. Spring Cloud Config Server Local Git Setup -**    
+📌 Following service used -    
+**Service** - 9.1.spring-cloud-config-server-localGit     
+
+🔁 **Implementation Steps**     
+**Step 1** - Config server project setup (9.1.spring-cloud-config-server-localGit).    
+**Step 2** - Create local drive folder and place there - configuration files of different enviornments.  
+EG. -    
+![Capture](https://github.com/user-attachments/assets/7c9813b2-46fc-4cfe-8ce8-f3ea9e9a5427)
+
+**Step 3** - Checkin local drive folder's files into local git -    
+![Capture](https://github.com/user-attachments/assets/3a1f1411-ca23-4a95-9d85-23ab3d97e93a)      
+
+
+- currency-conversion-service also registers itself with Eureka.
+- Spring Cloud LoadBalancer + Eureka is enabled in currency-conversion-service
+
+🔁 **Eureka server flow diagrams**        
