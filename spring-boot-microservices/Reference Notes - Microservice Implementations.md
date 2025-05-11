@@ -332,9 +332,9 @@ intance 2 - (Running on port 8085)**
 
 **Task-7. Spring Cloud Config Server Local Git Setup -**    
 📌 Following service used -    
-**Service** - 9.1.spring-cloud-config-server-localGit     
+- 9.1.spring-cloud-config-server-localGit     
 
-🔁 **Implementation Steps**     
+🔁 **Implementation Steps** -          
 **Step 1** - Config server project setup (9.1.spring-cloud-config-server-localGit).    
 **Step 2** - Create local drive folder and place there - configuration files of different enviornments.  
 EG. -    
@@ -356,7 +356,8 @@ http://localhost:8888/propertyfilename/qa
 ![Capture](https://github.com/user-attachments/assets/22c6d044-61d4-4062-bd59-4b401042e57c)
 
 
-🔁 **Spring cloud config server flow diagram** 
+🔁 **Spring cloud config server flow diagram**     
+```java
                                 +-----------------------------------+
                                 |      Local Git Repository         |
                                 |  file:///E:/.../local-drive-folder|
