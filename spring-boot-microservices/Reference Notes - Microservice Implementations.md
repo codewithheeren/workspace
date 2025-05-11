@@ -203,9 +203,10 @@ Disable eureka server for this implementation -
 **Task-5. Implementing Spring clound load balancer, 6.currency-conversion-service (Running on port 8100) Calling 3.currency-exchange-service Running 2 instances       intance 1 - (Running on port 8085)     
 intance 2 - (Running on port 8085)**    
 
-- This project implements spring cloud load balancer.
-- Prerequisite - execute multiple instances of currency exchange service.
-- Use following running configurations in Ecilipse/STS for currency exchange service -
+- This project implements spring cloud load balancer.     
+- Setting up client side load balancing with Ribbon cloud load balancer.     
+- Prerequisite - execute multiple instances of currency exchange service.     
+- Use following running configurations in Ecilipse/STS for currency exchange service -     
 ![image](https://github.com/user-attachments/assets/32d4466f-b8fb-4739-becd-73f264d54d48)   
 
 ![image](https://github.com/user-attachments/assets/b9af196c-58c5-4e94-8ad2-00c99c8aa2f6)   
