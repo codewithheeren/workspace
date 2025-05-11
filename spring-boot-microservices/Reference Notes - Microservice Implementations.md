@@ -343,8 +343,50 @@ EG. -
 **Step 3** - Checkin local drive folder's files into local git -    
 ![Capture](https://github.com/user-attachments/assets/3a1f1411-ca23-4a95-9d85-23ab3d97e93a)      
 
+**Step 4** - Connect spring cloud config server with local git repo directory -    
+![Capture](https://github.com/user-attachments/assets/117e9280-04a4-4ad1-b97f-34aabedffadc)
+     
+**Step 5** - Run spring cloud config server and test for different environment 
+```java
+http://localhost:8888/propertyfilename/default  
+http://localhost:8888/propertyfilename/dev
+http://localhost:8888/propertyfilename/qa
+```
+**Expected response -**     
+![Capture](https://github.com/user-attachments/assets/22c6d044-61d4-4062-bd59-4b401042e57c)
 
-- currency-conversion-service also registers itself with Eureka.
-- Spring Cloud LoadBalancer + Eureka is enabled in currency-conversion-service
 
-🔁 **Eureka server flow diagrams**        
+🔁 **Spring cloud config server flow diagram** 
+                                +-----------------------------------+
+                                |      Local Git Repository         |
+                                |  file:///E:/.../local-drive-folder|
+                                +-----------------------------------+
+                                             ▲
+                                             |
+                            (Loads property files at startup)
+                                             |
++--------------------------------------------|--------------------------------------------+
+|                                  Spring Cloud Config Server                             |
+|                          (http://localhost:8888, Port: 8888)                            |
+|  spring.application.name=spring-cloud-config-server                                     |
+|  spring.cloud.config.server.git.uri=file:///...                                         |
+|                                                                                        |
+|  @EnableConfigServer                                                                   |
+|                                                                                        |
+|  ➤ Serves configuration properties to client services                                  |
+|    - http://localhost:8888/{application}/{profile}                                     |
+|    - Example: http://localhost:8888/currency-conversion-service/default                |
+|                                                                                        |
++--------------------------------------------|--------------------------------------------+
+                                             |
+                                (REST API: GET config by app/profile)
+                                             |
+                  ----------------------------------------------------------------
+                  |                           |                                 |
++------------------------+     +-------------------------------+     +-------------------------------+
+|  currency-exchange-    |     |  currency-conversion-service  |     |  any other Spring Boot client |
+|  service (Port 8000/82)|     |  (Port 8100)                   |     | app (e.g., limits-service)   |
++------------------------+     +-------------------------------+     +-------------------------------+
+```
+---
+
