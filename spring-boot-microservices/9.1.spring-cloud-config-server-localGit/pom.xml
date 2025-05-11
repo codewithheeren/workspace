@@ -12,11 +12,11 @@
 	</parent>
 
 	<groupId>com.codewithheeren.microservices</groupId>
-	<artifactId>9.spring-cloud-config-server</artifactId>
+	<artifactId>9.1.spring-cloud-config-server-localGit</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>s9.spring-cloud-config-server</name>
+	<name>9.1.spring-cloud-config-server-localGit</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
