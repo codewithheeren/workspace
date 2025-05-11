@@ -466,3 +466,8 @@ For Dev profile , default and dev profile properties are getting as response.
 
 ```
 ---
+**This Assignmet need to be done with following steps-**
+- Create a Spring Cloud Config Server that reads .properties files (for default, dev, and qa) from a Git repository or local folder.    
+- Build a Spring Boot microservice (client) that connects to the config server and reads these properties dynamically.     
+- Create a simple REST endpoint in client microservice to return the loaded configuration values.         
+- Test the application by running it with different profiles (dev, qa, or default) to confirm the correct config values are loaded.   
