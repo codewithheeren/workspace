@@ -473,9 +473,24 @@ For Dev profile , default and dev profile properties are getting as response.
 
 ```
 ---
+**Task-9. Integrate microservices with spring cloud config server -**     
 **Assignment**
 **This Assignmet need to be done with following steps-**
 - Create a Spring Cloud Config Server that reads .properties files (for default, dev, and qa) from a Git repository or local folder.    
 - Build a Spring Boot microservice (client) that connects to the config server and reads these properties dynamically basis on activated profile.     
 - Create a simple REST endpoint in client microservice to return the loaded configuration values.         
-- Test the application by running it with different profiles (dev, qa, or default) to confirm the correct config values are loaded.   
+- Test the application by running it with different profiles (dev, qa, or default) to confirm the correct config values are loaded.
+---
+
+**Task-10. Spring cloud api gateway -**      
+
+📌 Following service used -    
+- 7.eureka-naming-server
+- 10.1api-gateway-server
+- 10.2currency-exchange-service
+- 10.3currency-conversion-service_dynamicloadbalancing
+  
+🔁 **Api gateway server flow diagrams**  
+![image](https://github.com/user-attachments/assets/010351ea-7474-4b95-ac0c-6a795c21129e)    
+
+---
